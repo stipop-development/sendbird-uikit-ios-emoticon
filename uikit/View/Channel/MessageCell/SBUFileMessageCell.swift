@@ -65,29 +65,40 @@ open class SBUFileMessageCell: SBUContentBaseMessageCell {
             receiptState: receiptState
         )
         
-        switch SBUUtils.getFileType(by: message) {
-        case .image, .video:
-            if !(self.baseFileContentView is ImageContentView){
+        if message.customType == "stipop_emoticon" {
+            if !(self.baseFileContentView is EmoticonContentView){
                 self.baseFileContentView.removeFromSuperview()
-                self.baseFileContentView = ImageContentView()
+                self.baseFileContentView = EmoticonContentView()
                 self.baseFileContentView.addGestureRecognizer(self.contentLongPressRecognizer)
                 self.baseFileContentView.addGestureRecognizer(self.contentTapRecognizer)
                 self.mainContainerView.insertArrangedSubview(self.baseFileContentView, at: 0)
             }
             self.baseFileContentView.configure(message: message, position: position)
+        } else {
+            switch SBUUtils.getFileType(by: message) {
+            case .image, .video:
+                if !(self.baseFileContentView is ImageContentView){
+                    self.baseFileContentView.removeFromSuperview()
+                    self.baseFileContentView = ImageContentView()
+                    self.baseFileContentView.addGestureRecognizer(self.contentLongPressRecognizer)
+                    self.baseFileContentView.addGestureRecognizer(self.contentTapRecognizer)
+                    self.mainContainerView.insertArrangedSubview(self.baseFileContentView, at: 0)
+                }
+                self.baseFileContentView.configure(message: message, position: position)
 
-        case .audio, .pdf, .etc:
-            if !(self.baseFileContentView is CommonContentView) {
-                self.baseFileContentView.removeFromSuperview()
-                self.baseFileContentView = CommonContentView()
-                self.baseFileContentView.addGestureRecognizer(self.contentLongPressRecognizer)
-                self.baseFileContentView.addGestureRecognizer(self.contentTapRecognizer)
-                self.mainContainerView.insertArrangedSubview(self.baseFileContentView, at: 0)
-            }
-            if let commonContentView = self.baseFileContentView as? CommonContentView {
-                commonContentView.configure(message: message,
-                                            position: position,
-                                            highlight: false)
+            case .audio, .pdf, .etc:
+                if !(self.baseFileContentView is CommonContentView) {
+                    self.baseFileContentView.removeFromSuperview()
+                    self.baseFileContentView = CommonContentView()
+                    self.baseFileContentView.addGestureRecognizer(self.contentLongPressRecognizer)
+                    self.baseFileContentView.addGestureRecognizer(self.contentTapRecognizer)
+                    self.mainContainerView.insertArrangedSubview(self.baseFileContentView, at: 0)
+                }
+                if let commonContentView = self.baseFileContentView as? CommonContentView {
+                    commonContentView.configure(message: message,
+                                                position: position,
+                                                highlight: false)
+                }
             }
         }
     }

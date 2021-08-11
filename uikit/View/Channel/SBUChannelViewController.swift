@@ -823,37 +823,39 @@ open class SBUChannelViewController: SBUBaseChannelViewController {
             guard fileMessage.sender?.userId == SBUGlobals.CurrentUser?.userId else { return }
             self.resendMessage(failedMessage: fileMessage)
         case .succeeded:
-            switch SBUUtils.getFileType(by: fileMessage) {
-            case .image:
-                let viewer = SBUFileViewer(fileMessage: fileMessage, delegate: self)
-                let naviVC = UINavigationController(rootViewController: viewer)
-                self.present(naviVC, animated: true)
-            case .etc, .pdf:
-                guard let url = URL(string: fileMessage.url),
-                   let fileURL = SBUCacheManager.saveAndLoadFileToLocal(url: url, fileName: fileMessage.name)  else {
-                    SBUToastManager.showToast(parentVC: self, type: .fileOpenFailed)
-                    return
+            if fileMessage.customType != "stipop_emoticon" {
+                switch SBUUtils.getFileType(by: fileMessage) {
+                case .image:
+                    let viewer = SBUFileViewer(fileMessage: fileMessage, delegate: self)
+                    let naviVC = UINavigationController(rootViewController: viewer)
+                    self.present(naviVC, animated: true)
+                case .etc, .pdf:
+                    guard let url = URL(string: fileMessage.url),
+                       let fileURL = SBUCacheManager.saveAndLoadFileToLocal(url: url, fileName: fileMessage.name)  else {
+                        SBUToastManager.showToast(parentVC: self, type: .fileOpenFailed)
+                        return
+                    }
+                    if fileURL.scheme == "file" {
+                        let dc = UIDocumentInteractionController(url: fileURL)
+                        dc.name = fileMessage.name
+                        dc.delegate = self
+                        dc.presentPreview(animated: true)
+                    } else {
+                        let safariVC = SFSafariViewController(url: fileURL)
+                        self.present(safariVC, animated: true, completion: nil)
+                    }
+                case .video, .audio:
+                    guard let url = URL(string: fileMessage.url),
+                       let fileURL = SBUCacheManager.saveAndLoadFileToLocal(url: url, fileName: fileMessage.name)  else {
+                        SBUToastManager.showToast(parentVC: self, type: .fileOpenFailed)
+                        return
+                    }
+                    let vc = AVPlayerViewController()
+                    vc.player = AVPlayer(url: fileURL)
+                    self.present(vc, animated: true) { vc.player?.play() }
+                default:
+                    break
                 }
-                if fileURL.scheme == "file" {
-                    let dc = UIDocumentInteractionController(url: fileURL)
-                    dc.name = fileMessage.name
-                    dc.delegate = self
-                    dc.presentPreview(animated: true)
-                } else {
-                    let safariVC = SFSafariViewController(url: fileURL)
-                    self.present(safariVC, animated: true, completion: nil)
-                }
-            case .video, .audio:
-                guard let url = URL(string: fileMessage.url),
-                   let fileURL = SBUCacheManager.saveAndLoadFileToLocal(url: url, fileName: fileMessage.name)  else {
-                    SBUToastManager.showToast(parentVC: self, type: .fileOpenFailed)
-                    return
-                }
-                let vc = AVPlayerViewController()
-                vc.player = AVPlayer(url: fileURL)
-                self.present(vc, animated: true) { vc.player?.play() }
-            default:
-                break
             }
         default:
             break

@@ -9,6 +9,7 @@
 import UIKit
 import SendBirdSDK
 import MobileCoreServices
+import Stipop
 
 @objcMembers
 open class SBUBaseChannelViewController: SBUBaseViewController {
@@ -19,7 +20,11 @@ open class SBUBaseChannelViewController: SBUBaseViewController {
     
     public private(set) lazy var tableView = UITableView()
     
-    public lazy var messageInputView: SBUMessageInputView = SBUMessageInputView()
+    public lazy var messageInputView: SBUMessageInputView = {
+        let messageInputView = SBUMessageInputView()
+        messageInputView.stipopButton?.delegate = self
+        return messageInputView
+    }()
     
     /// To use the custom user profile view, set this to the custom view created using `SBUUserProfileViewProtocol`.
     /// And, if you do not want to use the user profile feature, please set this value to nil.
@@ -1532,3 +1537,20 @@ extension SBUBaseChannelViewController: SBUFileViewerDelegate {
     }
 }
 
+extension SBUBaseChannelViewController: SPUIButtonDelegate {
+    public var viewType: SPViewType {
+        return .picker
+    }
+    
+    public var user: SPUser {
+        return SPUser(userID: "1234")
+    }
+    
+    public func onStickerSelect(_ sticker: SPSticker) {
+        let params = SBDFileMessageParams(fileUrl: sticker.stickerImg)
+        if let params = params {
+            params.customType = "stipop_emoticon"
+            sendFileMessage(messageParams: params)
+        }
+    }
+}

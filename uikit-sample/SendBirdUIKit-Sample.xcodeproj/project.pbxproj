@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030785CC26B7D94600997ADD /* Stipop.plist in Resources */ = {isa = PBXBuildFile; fileRef = 030785CB26B7D94600997ADD /* Stipop.plist */; };
+		030785D026B7E86600997ADD /* EmoticonContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030785CF26B7E86600997ADD /* EmoticonContentView.swift */; };
 		2E79897A8FDCB52BA1911F21 /* libPods-SendBirdUIKit-Sample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 707286E9F4FB5E6C041CB07D /* libPods-SendBirdUIKit-Sample.a */; };
 		9C0E9688268B21B5002B50F4 /* SBUToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E9686268B21B4002B50F4 /* SBUToastManager.swift */; };
 		9C0E9689268B21B5002B50F4 /* SBUCacheManager.File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E9687268B21B4002B50F4 /* SBUCacheManager.File.swift */; };
@@ -193,6 +195,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		030785CB26B7D94600997ADD /* Stipop.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Stipop.plist; sourceTree = "<group>"; };
+		030785CF26B7E86600997ADD /* EmoticonContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoticonContentView.swift; sourceTree = "<group>"; };
 		707286E9F4FB5E6C041CB07D /* libPods-SendBirdUIKit-Sample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SendBirdUIKit-Sample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7421701286ECCC463A517183 /* Pods-SendBirdUIKit-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SendBirdUIKit-Sample.debug.xcconfig"; path = "Target Support Files/Pods-SendBirdUIKit-Sample/Pods-SendBirdUIKit-Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		9C0E9686268B21B4002B50F4 /* SBUToastManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBUToastManager.swift; sourceTree = "<group>"; };
@@ -533,6 +537,7 @@
 				9C777D63241B9024006FFE25 /* Assets.xcassets */,
 				9C777D65241B9024006FFE25 /* LaunchScreen.storyboard */,
 				9C777D68241B9024006FFE25 /* Info.plist */,
+				030785CB26B7D94600997ADD /* Stipop.plist */,
 			);
 			path = "SendBirdUIKit-Sample";
 			sourceTree = "<group>";
@@ -944,6 +949,7 @@
 				C6D3DD1526141C00003E6DCB /* OpenChannelCommonContentView.swift */,
 				C6D3DD1626141C00003E6DCB /* BaseFileContentView.swift */,
 				C6D3DD1726141C00003E6DCB /* ImageContentView.swift */,
+				030785CF26B7E86600997ADD /* EmoticonContentView.swift */,
 				C6D3DD1826141C00003E6DCB /* CommonContentView.swift */,
 				C6D3DD1926141C00003E6DCB /* OpenChannelImageContentView.swift */,
 			);
@@ -1127,6 +1133,8 @@
 			dependencies = (
 			);
 			name = "SendBirdUIKit-Sample";
+			packageProductDependencies = (
+			);
 			productName = "SendBirdUIKit-Sample";
 			productReference = 9C777D57241B9022006FFE25 /* SendBirdUIKit-Sample.app */;
 			productType = "com.apple.product-type.application";
@@ -1155,6 +1163,8 @@
 				Base,
 			);
 			mainGroup = 9C777D4E241B9022006FFE25;
+			packageReferences = (
+			);
 			productRefGroup = 9C777D58241B9022006FFE25 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1170,6 +1180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6D3DD7726141C00003E6DCB /* SBUReactionCollectionViewCell.xib in Resources */,
+				030785CC26B7D94600997ADD /* Stipop.plist in Resources */,
 				9C777D67241B9024006FFE25 /* LaunchScreen.storyboard in Resources */,
 				9C777D64241B9024006FFE25 /* Assets.xcassets in Resources */,
 				C6D3DCDE261411EB003E6DCB /* Assets.xcassets in Resources */,
@@ -1250,6 +1261,7 @@
 				C6D3DD8826141C00003E6DCB /* SBUContentBaseMessageCell.swift in Sources */,
 				9CDDA30324B47FF200F77A59 /* CustomUserCell.swift in Sources */,
 				C6D3DDB526141C00003E6DCB /* SBUChannelSettingsViewController.swift in Sources */,
+				030785D026B7E86600997ADD /* EmoticonContentView.swift in Sources */,
 				C6D3DD8F26141C00003E6DCB /* SBUUserNameView.swift in Sources */,
 				9C777D5F241B9022006FFE25 /* ViewController.swift in Sources */,
 				9CED4D1324ADE41200D81B10 /* ChannelSettingsCustomManager.swift in Sources */,

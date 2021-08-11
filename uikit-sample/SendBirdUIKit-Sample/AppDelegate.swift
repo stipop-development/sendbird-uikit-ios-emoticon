@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Stipop
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -22,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         SBUGlobals.UsingUserProfileInOpenChannel = true
         
         initializeRemoteNotification()
+        
+        Stipop.initialize()
         
         return true
     }

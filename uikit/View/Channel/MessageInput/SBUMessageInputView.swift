@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import AVKit
+import Stipop
 
 
 @objc public protocol SBUMessageInputViewDelegate: NSObjectProtocol {
@@ -40,6 +41,8 @@ open class SBUMessageInputView: UIView, SBUActionSheetDelegate, UITextViewDelega
         tv.delegate = self
         return tv
     }()
+    
+    public lazy var stipopButton: SPUIButton? = SPUIButton(type: .system)
     
     public lazy var sendButton: UIButton? = {
         let button = UIButton()
@@ -202,6 +205,9 @@ open class SBUMessageInputView: UIView, SBUActionSheetDelegate, UITextViewDelega
         }
         self.inputHStackView.addArrangedSubview(self.inputContentView)
         self.inputHStackView.addArrangedSubview(self.textViewTrailingPaddingView)
+        if let stipopButton = self.stipopButton {
+            self.inputHStackView.addArrangedSubview(stipopButton)
+        }
         if let sendButton = self.sendButton {
             self.inputHStackView.addArrangedSubview(sendButton)
         }
@@ -261,6 +267,7 @@ open class SBUMessageInputView: UIView, SBUActionSheetDelegate, UITextViewDelega
             self.placeholderLabel.sbu_constraint(equalTo: textView, leading: 14, top: 10)
             self.setupTextViewHeight(textView: textView)
         }
+        self.stipopButton?.sbu_constraint(width: 30, height: 38)
         self.sendButton?.sbu_constraint(width: 32, height: 38)
         
         // leading/trailing spacing for textview
