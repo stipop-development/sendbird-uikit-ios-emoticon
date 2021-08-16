@@ -1549,7 +1549,7 @@ extension SBUBaseChannelViewController: SPUIButtonDelegate {
     public func onStickerSelect(_ sticker: SPSticker) {
         let params = SBDFileMessageParams(fileUrl: sticker.stickerImg)
         if let params = params {
-            params.customType = "stipop_emoticon"
+            params.customType = "stipop_sticker"
             sendFileMessage(messageParams: params)
         }
     }

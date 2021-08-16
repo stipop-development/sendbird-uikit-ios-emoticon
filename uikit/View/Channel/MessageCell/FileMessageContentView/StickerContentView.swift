@@ -1,5 +1,5 @@
 //
-//  EmoticonContentView.swift
+//  StickerContentView.swift
 //  SendBirdUIKit-Sample
 //
 //  Created by Jay Ahn on 2021/08/02.
@@ -9,7 +9,7 @@
 import UIKit
 import SendBirdSDK
 
-class EmoticonContentView: BaseFileContentView {
+class StickerContentView: BaseFileContentView {
     var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -112,7 +112,7 @@ class EmoticonContentView: BaseFileContentView {
         
         super.configure(message: message, position: position)
         
-        self.resizeImageView(by: SBUConstant.emoticonSize)
+        self.resizeImageView(by: SBUConstant.stickerSize)
         
         
         self.imageView.loadImage(urlString: message.url)

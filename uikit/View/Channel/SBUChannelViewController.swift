@@ -823,7 +823,7 @@ open class SBUChannelViewController: SBUBaseChannelViewController {
             guard fileMessage.sender?.userId == SBUGlobals.CurrentUser?.userId else { return }
             self.resendMessage(failedMessage: fileMessage)
         case .succeeded:
-            if fileMessage.customType != "stipop_emoticon" {
+            if fileMessage.customType != "stipop_sticker" {
                 switch SBUUtils.getFileType(by: fileMessage) {
                 case .image:
                     let viewer = SBUFileViewer(fileMessage: fileMessage, delegate: self)

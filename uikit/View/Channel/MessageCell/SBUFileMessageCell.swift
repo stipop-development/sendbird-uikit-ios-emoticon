@@ -65,10 +65,10 @@ open class SBUFileMessageCell: SBUContentBaseMessageCell {
             receiptState: receiptState
         )
         
-        if message.customType == "stipop_emoticon" {
-            if !(self.baseFileContentView is EmoticonContentView){
+        if message.customType == "stipop_sticker" {
+            if !(self.baseFileContentView is StickerContentView){
                 self.baseFileContentView.removeFromSuperview()
-                self.baseFileContentView = EmoticonContentView()
+                self.baseFileContentView = StickerContentView()
                 self.baseFileContentView.addGestureRecognizer(self.contentLongPressRecognizer)
                 self.baseFileContentView.addGestureRecognizer(self.contentTapRecognizer)
                 self.mainContainerView.insertArrangedSubview(self.baseFileContentView, at: 0)
