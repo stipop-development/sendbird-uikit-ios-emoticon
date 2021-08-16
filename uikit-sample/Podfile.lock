@@ -1,10 +1,10 @@
 PODS:
   - SendBirdSDK (3.0.230)
-  - Stipop (0.1.0-beta.0)
+  - Stipop (0.1.0-beta.3)
 
 DEPENDENCIES:
   - SendBirdSDK (~> 3.0.216)
-  - Stipop (~> 0.1.0-beta.0)
+  - Stipop (~> 0.1.0-beta.3)
 
 SPEC REPOS:
   trunk:
@@ -13,8 +13,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   SendBirdSDK: b52956b85359ae7dfb04d7735b657379bb7cf50b
-  Stipop: 4be5835881ffd234ab5a045fa55e45ae28a0d473
+  Stipop: 7fb72f19230e0094a91938a7f8533bddae366e37
 
-PODFILE CHECKSUM: 766f710dbbffe549f3bb08f6c3428e53d738cd13
+PODFILE CHECKSUM: 3ff370ae03dad257c4a872e7cb460e95e8123477
 
 COCOAPODS: 1.10.1
