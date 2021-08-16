@@ -43,9 +43,9 @@
 			<key>tintColor</key>
 			<dict>
 				<key>light</key>
-				<string>#FF855B</string>
+				<string>#6C31D5</string>
 				<key>dark</key>
-				<string>#FF855B</string>
+				<string>#6C31D5</string>
 			</dict>
 		</dict>
 		<key>font</key>
